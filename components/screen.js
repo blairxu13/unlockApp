@@ -9,6 +9,7 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { Button } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {
   SafeAreaView,
   ScrollView,
@@ -34,8 +35,11 @@ const LoginScreen = () => {
 
  <Text style={styles.text}>slay</Text>
       <Text style={styles.text}>another text</Text>
-      <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-    Press me
+
+  <Icon name="lock-open" type="onicon" color="#887700" />
+      
+      <Button  mode="contained" onPress={() => console.log('Pressed')}>
+    Press meee
   </Button>
      
     </View>
