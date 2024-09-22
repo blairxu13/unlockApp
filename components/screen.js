@@ -6,7 +6,7 @@
  */
 // import Screen from './components/Screem';
 
-import React from 'react';
+import React, { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { Button } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,6 +15,7 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
+  TextInput,
   Text,
   useColorScheme,
   View,
@@ -27,21 +28,44 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+// import {}
 
 const LoginScreen = () => {
+  const [infoname, setInfoname] = useState('');
+const [infopw, setInfopw] = useState('');
+ 
+  const handleSubmit = async() => {
+    const response = await fetch('http://localhost:3000/api/product', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: infoname,
+        password: infopw
+      }), // Send the data to the backend
+    });
+   
+  }
+
   return (
    
       <View style = {styles.container}>
-
- <Text style={styles.text}>slay</Text>
-      <Text style={styles.text}>another text</Text>
-
-  <Icon name="lock-open" type="onicon" color="#887700" />
-      
-      <Button  mode="contained" onPress={() => console.log('Pressed')}>
-    Press meee
+  <TextInput
+        style={styles.textDesign}
+       value = {infoname}
+        placeholder="Enter your name here"
+        onChangeText={setInfoname}
+      />
+      <TextInput
+        style={styles.textDesign}
+        value = {infopw}
+        placeholder="Enter your pw here"
+        onChangeText={setInfopw}
+      />
+           <Button style={styles.button} mode="contained" onPress={handleSubmit}>
+    LOG IN
   </Button>
-     
     </View>
     
     
@@ -55,10 +79,26 @@ const styles = StyleSheet.create({
   backgroundColor: 'yellow',
   paddingTop: 40,
  },
+ button: {
+  marginTop: 20,
+ },
+
+ textDesign: {
+  width: 200,                 // Fixed width
+  height: 40,
+  marginTop: 20,
+   fontSize: 15,
+   backgroundColor: 'lightblue',
+   borderRadius: 15, 
+  borderColor: 'black',
+  borderStyle: 'solid',
+  borderWidth: 1
+  
+ },
  text: {
   marginTop: 50,   
    padding: 10,
-  fontSize: 24,
+  fontSize: 15,
  },
 
 
