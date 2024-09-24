@@ -9,6 +9,7 @@
 import React, { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { Button } from 'react-native-paper';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   SafeAreaView,
@@ -30,7 +31,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 // import {}
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [infoname, setInfoname] = useState('');
 const [infopw, setInfopw] = useState('');
  
@@ -45,7 +46,10 @@ const [infopw, setInfopw] = useState('');
         password: infopw
       }), // Send the data to the backend
     });
-   
+
+
+      navigation.navigate('Home');  // Use navigation prop to navigate
+    
   }
 
   return (
@@ -63,7 +67,7 @@ const [infopw, setInfopw] = useState('');
         placeholder="Enter your pw here"
         onChangeText={setInfopw}
       />
-           <Button style={styles.button} mode="contained" onPress={handleSubmit}>
+           <Button style={styles.button} mode="contained"onPress={() => handleSubmit()}>
     LOG IN
   </Button>
     </View>
