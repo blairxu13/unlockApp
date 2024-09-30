@@ -13,7 +13,7 @@ import {
 const HomeScreen = () => {
     return (
        <View>
-          <Text>Hello, World!</Text>
+          <Text>This is homescreen</Text>
        </View>
     )
 }

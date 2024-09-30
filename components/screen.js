@@ -31,7 +31,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 // import {}
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = (
+{navigation}
+) => {
   const [infoname, setInfoname] = useState('');
 const [infopw, setInfopw] = useState('');
  
@@ -48,7 +50,7 @@ const [infopw, setInfopw] = useState('');
     });
 
 
-      navigation.navigate('Home');  // Use navigation prop to navigate
+      navigation.navigate('Homescreen');  // Use navigation prop to navigate
     
   }
 
